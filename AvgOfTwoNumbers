@@ -1,0 +1,12 @@
+//avg of two numbers
+#include<iostream>
+int main()
+{
+	float a,b;
+	std::cout<<"Enter two numbers:";
+	std::cin>>a;
+	std::cin>>b;
+	std::cout<<"\n The avg is:"<<((a+b)/2);
+	return 0;
+}
+	
