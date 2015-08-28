@@ -1,0 +1,23 @@
+#include <stdio.h>
+ 
+int main() {
+	int t;
+	scanf ("%d", &t);
+	
+	while (t--) {
+		int a, b, m, n, o;
+		scanf ("%d %d", &a, &b);
+		m = a;
+		n = b;
+ 
+		while (n) {
+			m = m % n;
+			o = m;
+			m = n;
+			n = o;
+		}
+ 
+		printf ("%d %d\n", m, (a * b) / m);
+		}
+	return 0;
+} 
