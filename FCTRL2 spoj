@@ -1,0 +1,50 @@
+#include <cstdio>
+ 
+int main()
+{
+	int T, k;
+	int bigint[100], temp, digs;
+	
+	scanf("%d", &T);
+	while(T--)
+	{
+		scanf("%d", &k);
+		
+		digs = 0;
+		bigint[0] = k;
+		int index;
+		while(--k)
+		{
+			temp = 0;
+			index = 0;
+			while(1)
+			{
+				if(index <= digs)
+				{
+					int x = bigint[index] * k + temp;
+					temp = x/1000;
+					bigint[index] = x%1000;
+				}
+				else
+				{
+					bigint[index] = temp%1000;
+					temp = temp/1000;
+				}
+				index++;
+				if(temp == 0 && index > digs)
+					break;
+			}
+			digs = (index > digs? --index : digs);
+		}
+		printf("%d", bigint[digs]);
+		--digs;
+		while(digs >= 0)
+		{
+			printf("%03d", bigint[digs]);
+			--digs;
+		}
+		printf("\n");
+	}
+	
+	return 0;
+} 
