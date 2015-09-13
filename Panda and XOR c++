@@ -1,0 +1,73 @@
+#include<iostream>
+using namespace std;
+
+#define MOD (int)(1e9 + 7)
+
+long long int modpow(long long int a, long long int n, long long int temp)
+{
+    long long int res = 1, y = a;
+    while (n > 0) {
+        if (n & 1){
+            res = (res*y) % temp;
+        }
+        y = (y*y) % temp;
+        n /= 2;
+    }
+    return res % temp;
+}
+
+long long int arr[100006], flagit[134], flg[134];
+
+inline long long int chck(long long int calc)
+{
+    while (calc < 0)
+        calc += MOD;
+    calc %= MOD;
+    return calc;
+}
+
+int main()
+{
+    long long int n, calc, calc1, i, j, c1, c2, ans = 0;
+    scanf("%lld", &n);
+    for (i = 0; i < n; i++)
+    {
+        scanf("%lld", &arr[i]);
+    }
+    for (i = 0; i < 135; i++)
+        flagit[i] = 0;
+    for (i = 0; i < n; i++)
+    {
+        for (j = 0; j < 135; j++)
+            flg[j] = 0;
+        for (j = 0; j < 129; j++)
+        {
+            if (flagit[j] != 0)
+            {
+                calc = j^arr[i];
+                flg[calc] += flagit[j];
+                flg[calc] = flg[calc] % MOD;
+            }
+        }
+        for (j = 0; j < 129; j++)
+        {
+            flagit[j] += flg[j];
+            flagit[j] = flagit[j] % MOD;
+        }
+        flagit[arr[i]]++;
+        flagit[arr[i]] = flagit[arr[i]] % MOD;
+    }
+    c2 = modpow(2, MOD - 2, MOD);
+    for (i = 0; i < 129; i++)
+    {
+        calc = flagit[i];
+        c1 = calc*(calc - 1);
+        c1 = chck(c1);
+        c1 = c1*c2;
+        c1 = c1 % MOD;
+        ans += c1;
+        ans %= MOD;
+    }
+    printf("%lld\n", ans);
+    return 0;
+}
