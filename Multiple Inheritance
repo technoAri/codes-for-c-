@@ -1,0 +1,61 @@
+#include<iostream>
+#include<math.h>
+using namespace std;
+
+class Rec
+{
+	float a;
+	public:
+		void area(int a)
+		{
+			cout<<"\n ...............OUTPUT...................";
+			cout<<"\n Peremeter is::"<<4*a;
+		}
+		
+};
+class Cuboid:virtual public Rec
+{
+	int m,n,o;
+	public:
+		void volume(int m, int n, int o)
+		{
+			cout<<"\n Volume is::"<<m*n*o;	
+		}
+};
+class PrinDia:virtual public Rec
+{
+	int l;
+	public:
+		float dia(int l)
+		{
+			cout<<"\n Principal Diagonal of Rectangle is::"<<(sqrt(2)*l);
+		}
+};
+class Cube:public Cuboid, public PrinDia
+{
+	int x;
+	public:
+			//a=x;
+		void calculate(int x)
+		{
+			cout<<"\n volume of cube is::"<<x*x*x;
+			cout<<"\n Principle Diagonal of cuboid is::"<<sqrt((x*x)+(x*x)+(x*x));
+			cout<<"\n Surface Area is::"<<6*x*x;
+		}
+};
+
+int main()
+{
+	float in;
+	cout<<"\n Enter value of input::";
+	cin>>in;
+	Rec r;
+	r.area(in);
+	Cuboid c;
+	c.volume(in,in,in);
+	PrinDia p;
+	p.dia(in);
+	Cube c2;
+	c2.calculate(in);
+	return 0;
+}
