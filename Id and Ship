@@ -1,0 +1,31 @@
+#include<iostream>
+using namespace std;
+int main()
+{
+  int T;
+  char C;
+  cin>>T;
+  while(T--)
+  {
+    cin>>C; 
+    if(C=='B' || C=='b')
+    {
+      cout<<"BattleShip\n";
+    }
+    else if(C=='C' || C=='c')
+    {
+      cout<<"Cruiser\n";
+    }
+    else if(C=='F' || C=='f')
+    {
+     cout<<"Frigate\n";
+    }
+    else if(C=='D' || C=='d')
+    {
+     cout<<"Destroyer\n";
+    }
+  }
+   
+       return 0;
+}
+ 
