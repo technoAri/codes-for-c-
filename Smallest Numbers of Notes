@@ -1,0 +1,53 @@
+#include<iostream>
+using namespace std;
+
+int main()
+{
+	long int count=0, notes;
+	int t;
+	cin>>t;
+	while(t--)
+	{
+		cin>>notes;
+		if(notes<1000000)
+		{
+			count+=notes/100;
+			//count++;
+			notes=notes%100;
+		}
+		if(notes<1000000)
+		{
+			count+=notes/50;
+			//count++;
+			notes=notes%50;
+		}
+		if(notes<1000000)
+		{
+			count+=notes/10;
+			//count++;
+			notes=notes%10;
+		}
+		if(notes<1000000)
+		{
+			count+=notes/5;
+			//count++;
+			notes=notes%5;
+		}
+		if(notes<1000000)
+		{
+			count+=notes/2;
+			//count++;
+			notes=notes%2;
+		}
+		if(notes<1000000)
+		{
+			count+=notes/1;
+			//count++;
+			notes=notes%1;
+		}
+		cout<<"\n"<<count;
+		count=0;
+	}
+	
+	return 0;
+}
